@@ -1,0 +1,228 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Rutgers MAE Design & Manufacturing Parts List Builder</title>
+        <meta name="description" content="Rutgers MAE 2016-2017 Order Form">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/override.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="js/vendor/jquery-ui.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+		<script src="js/vendor/jspdf.debug.js"></script>
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+    <script src="popup.js"></script>
+  </head>
+  <body>
+	<div id="popup-loading-container">
+		<div class="text-center">Loading...</div>
+	</div>
+	<div class="hidden" id="popup-list-container">
+		<div class="container">
+			<div class="text-center">
+				<div class="text-left width-15 display-inline-block"></div>
+				<div class="text-center width-65 display-inline-block"><h2>Parts List</h2></div>
+				<div class="text-right width-15 display-inline-block">
+					<a href="#" id="button-download" data-toggle="tooltip" data-placement="left" title="Export Current Order and Settings"><img src="img/download.png" height=25></img></a>
+					<a href="#" id="button-settings" data-toggle="tooltip" data-placement="left" title="Go to Settings"><img src="img/tools.png" height=25></img></a>
+				</div>
+			</div>
+			<hr>
+			<form id="form-list">
+				<table id="table-list" class="table table-hover">
+					<thead>
+						<tr>
+							<td>Line</td>
+							<td>Vendor</td>
+							<td>Item SKU#</td>
+							<td>Quantity</td>
+							<td>Price/Unit</td>
+							<td>Item Total</td>
+							<td>Item Description</td>
+						</tr>
+					</thead>
+					<tbody id="parts-list">
+						<!--<tr>
+							<td style="vertical-align:middle">????</td>
+							<td style="vertical-align:middle">####</td>
+							<td><input type="number" class="form-control" placeholder="1" min="1" step="1" max="1000"></input></td>
+							<td style="vertical-align:middle">0.00</td>
+							<td style="vertical-align:middle">0.00</td>
+							<td style="vertical-align:middle">????</td>
+							<td class="text-right">
+								<button type="button" class="btn btn-danger btn-circle btn-xs"><i class="glyphicon glyphicon-remove"></i></button>
+							</td>
+						</tr>-->
+					</tbody>
+					<tfoot>
+						<tr>
+							<td style="vertical-align:middle"></td>
+							<td style="vertical-align:middle"></td>
+							<td style="vertical-align:middle"></td>
+							<td></td>
+							<td style="vertical-align:middle"></td>
+							<td style="vertical-align:middle"></td>
+							<td style="vertical-align:middle">Total: </td>
+							<td class="text-left width-50" id="total">
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</form>
+			<hr>
+			<div id="list-buttons" class="text-right">
+				<button type="button" class="btn btn-primary btn-md" id="clear-cart">Clear Cart</button>
+				<button type="button" class="btn btn-primary btn-md" id="done">Checkout</button>
+			</div>
+		</div>
+	</div>
+	<div class="hidden" id="popup-settings-container">
+		<div class="container">
+			<div class="text-center">
+				<div class="text-left width-15 display-inline-block first-time-hide"></div>
+				<div class="text-center width-65 display-inline-block first-time-hide"><h2>Settings</h2></div>
+				<div class="text-right width-15 display-inline-block first-time-hide">
+					<a class="button-back" href="#"><img src="img/back.png" height=25></img></a>
+				</div>
+				<hr class="first-time-hide">
+				<div class="text-center first-time-show" id="container-first-time-setup">
+					<h5 class="text-info">First-time Setup</h5>
+					<h6 class="text-center margin-auto">Please fill in the following information to make sure your order is processed correctly.</h6>
+				</div>
+				<div class="text-left" id="container-settings">
+					<form>
+						<fieldset id="settings-group-project-info">
+							<legend>
+								<h5 class="text-info">Project Info</h5>
+							</legend>
+							<div class="form-group row">
+								<label for="settings-group-number" class="col-xs-2 col-form-label">Group Number</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-group-number">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-project-name" class="col-xs-2 col-form-label">Project Name</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-project-name">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-advisor" class="col-xs-2 col-form-label">Advisor</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-advisor">
+								</div>
+							</div>
+						</fieldset>
+						<fieldset id="settings-group-leader-info">
+							<legend>
+								<h5 class="text-info">Leader Info</h5>
+							</legend>
+							<div class="form-group row">
+								<label for="settings-leader-name" class="col-xs-2 col-form-label">Leader Name</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-leader-name">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-leader-netid" class="col-xs-2 col-form-label">Leader NetID</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-leader-netid">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-leader-email" class="col-xs-2 col-form-label">Leader Email</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-leader-email">
+								</div>
+							</div>
+						</fieldset>
+						<fieldset id="settings-recipient-info">
+							<legend>
+								<h5 class="text-info">Recipient Info</h5>
+							</legend>
+							<div class="form-group row">
+								<label for="settings-recipient-name" class="col-xs-2 col-form-label">Recipient Name</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-recipient-name">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-recipient-netid" class="col-xs-2 col-form-label">Recipient NetID</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-recipient-netid">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-recipient-email" class="col-xs-2 col-form-label">Recipient Email</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-recipient-email">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-recipient-phone" class="col-xs-2 col-form-label">Recipient Phone</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-recipient-phone">
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+			<hr>
+			<form>
+				<div class="text-center first-time-hide" id="settings-buttons">
+					<button type="button" class="btn btn-danger btn-md text-center" id="button-cancel-settings">Revert Changes</button>
+					<button type="button" class="btn btn-success btn-md text-center" id="button-save-settings">Save Changes</button>
+				</div>
+				<div class="text-right first-time-show" id="settings-buttons-first-time">
+					<button type="button" class="btn btn-info btn-md text-center" id="button-first-time-continue">Continue</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="container hidden" id="popup-notifications-container">
+		<div class="container">
+			<div class="text-center">
+				<div class="text-left width-15 display-inline-block"></div>
+				<div class="text-center width-65 display-inline-block"><h2>Item Added</h2></div>
+				<div class="text-right width-15 display-inline-block"></div>
+				</div>
+			</div>
+			<hr>
+			<div class="container text-center" id="added-item-container">
+				Loading Item Description...
+			</div>
+			<hr>
+			<form>
+				<div class="text-center" id="notification-buttons">
+					<button type="button" class="btn btn-primary btn-md text-center" id="button-go-to-item-list">Go to Item List</button>
+					<button type="button" class="btn btn-success btn-md text-center" id="button-continue-shopping">Continue Shopping</button>
+				</div>
+			</form>
+		</div>
+	</div>
+  </body>
+</html>
+

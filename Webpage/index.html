@@ -1,0 +1,229 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Rutgers MAE | Order Form for 650:467 Design & Manufacturing I</title>
+        <meta name="description" content="Rutgers MAE Design and Manufacturing 2016-2017 Order Form">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/override.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="js/vendor/jquery-ui.js"></script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+		<script src="js/vendor/jspdf.debug.js"></script>
+		
+		<script src="js/main.js"></script>
+		<script src="js/ui.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <nav class="navbar bg-scarlet" role="navigation">
+      <div class="container width-100">
+        <div class="navbar-header text-center text-vertical-center width-100">
+			<div id="nav-logo">
+				<img src="./img/logo.png"></img>
+			</div>
+			<div id="nav-text">
+				<h3>650:467 Design & Manufacturing I: Part Order Form</h3>
+			</div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container width-50" >
+        <p>To facilitate a more streamlined ordering process, the following rules are in effect for the 2016-2017 AY:</p>
+		<ul class="list-group">
+			<li class="list-group-item">Your orders must be from one of the following vendors, unless none carry what you need:</li>
+			<li class="list-group-item">
+				<ul class="list-group width-20em margin-auto vendor-list-text">
+					<li class="list-group-item">Amazon <span class="badge">Preferred</span></li>
+					<li class="list-group-item">McMaster-Carr <span class="badge">Preferred</span></li>
+				</ul>
+			</li>
+			<li class="list-group-item">For parts that require specialized vendors, please fill out a <a href="#">Specialized Part Order Form</a>.</li>
+			<li class="list-group-item">Your order will be processed in the closest viable order window as announced by the TAs. Order windows will be strictly observed, meaning that submitting an order form late will result in the order being pushed to the next available order window, no exceptions.</li>
+		</ul>
+      </div>
+    </div>
+	<div class="container width-50">
+		<div class="panel-group">
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+				<h4 class="panel-title">
+				  <a data-toggle="collapse" href="#collapse-group-info" id="collapse-group-info-link"><div class="text-center"><h3>Order Details</h2></div></a>
+				</h4>
+			  </div>
+			  <div id="collapse-group-info" class="panel-collapse collapse in">
+				<div class="panel-body">
+					<form>
+						<fieldset id="settings-group-project-info">
+							<legend>
+								<h5 class="text-info">Project Info</h5>
+							</legend>
+							<div class="form-group row">
+								<label for="settings-group-number" class="col-xs-2 col-form-label">Group Number</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-group-number" placeholder="e.g. Q1">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-project-name" class="col-xs-2 col-form-label">Project Name</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-project-name" placeholder="e.g. Example Project Title">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-advisor" class="col-xs-2 col-form-label">Advisor</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-advisor" placeholder="e.g. Assimina Pelegri">
+								</div>
+							</div>
+						</fieldset>
+						<fieldset id="settings-group-leader-info">
+							<legend>
+								<h5 class="text-info">Leader Info</h5>
+							</legend>
+							<div class="form-group row">
+								<label for="settings-leader-name" class="col-xs-2 col-form-label">Leader Name</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-leader-name" placeholder="e.g. Firstname Lastname">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-leader-netid" class="col-xs-2 col-form-label">Leader NetID</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-leader-netid" placeholder="e.g. abc123">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-leader-email" class="col-xs-2 col-form-label">Leader Email</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-leader-email" placeholder="e.g. leader@rutgers.edu">
+								</div>
+							</div>
+						</fieldset>
+						<fieldset id="settings-recipient-info">
+							<legend>
+								<h5 class="text-info">Recipient Info</h5>
+							</legend>
+							<div class="form-group row">
+								<label for="settings-recipient-name" class="col-xs-2 col-form-label">Recipient Name</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-recipient-name" placeholder="e.g. Firstname Lastname">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-recipient-netid" class="col-xs-2 col-form-label">Recipient NetID</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-recipient-netid" placeholder="e.g. xyz123">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-recipient-email" class="col-xs-2 col-form-label">Recipient Email</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-recipient-email" placeholder="e.g. recipient@rutgers.edu">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="settings-recipient-phone" class="col-xs-2 col-form-label">Recipient Phone</label>
+								<div class="col-xs-9">
+									<input class="form-control form-control-sm" type="text" id="settings-recipient-phone" placeholder="e.g. (555)123-4567">
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="panel-footer"></div>
+			  </div>
+			</div>
+		</div>
+	</div>
+    <div class="container">
+		<div class="text-center"><h2>Parts List</h2><hr></div>
+		<form>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<td>Vendor</td>
+						<td>Item SKU#</td>
+						<td>Quantity</td>
+						<td>Price/Unit</td>
+						<td>Item Total</td>
+						<td>Item Description</td>
+					</tr>
+				</thead>
+				<tbody id="items-list">
+					<tr class="items-list-line">
+						<td class="item-vendor">
+							<select class="form-control item-vendor-input">
+								<option value="Amazon">Amazon</option>
+								<option value="McMaster-Carr">McMaster-Carr</option>
+							</select>
+						</td>
+						<td class="item-sku"><input type="text" class="form-control item-sku-input" placeholder="Item SKU#"></input></td>
+						<td class="item-quantity"><input type="text" class="form-control item-quantity-input item-recalculate" placeholder="Quantity"></input></td>
+						<td class="item-price"><span class="dollar-sign">$</span><input type="number" class="form-control item-price-input item-recalculate" placeholder="0.00" min="0.01" step="0.01" max="500"></input></td>
+						<td class="item-total" style="vertical-align:middle">$0.00</td>
+						<td class="item-description"><input type="text" class="form-control item-description-input" placeholder="Item Description"></input></td>
+						<td class="text-right">
+							<button type="button" class="btn btn-danger btn-circle button-delete"><i class="glyphicon glyphicon-remove"></i></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table">
+				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td class="text-right">
+							<button type="button" class="btn btn-success btn-circle button-add"><i class="glyphicon glyphicon-plus-sign"></i></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<hr style="margin:0">
+			<div id="order-summary">
+				<div class="text-right" id="order-summary-total">
+					<h4 class="display-inline-block">Total:</h4><h4 class="display-inline-block" id="order-summary-total-text">$0.00</h4>
+				</div>
+			</div>
+			<div class="text-right">
+				<button type="button" class="btn btn-primary btn-lg button-clear">Clear Cart</button>
+				<button type="button" class="btn btn-warning btn-lg button-save">Save For Later</button>
+				<button type="button" class="btn btn-danger btn-lg button-submit">Checkout</button>
+			</div>
+		</form>
+
+		<hr>
+
+		<footer>
+		Please email your TA if you have any questions.
+		</footer>
+    </div>
+    </body>
+</html>

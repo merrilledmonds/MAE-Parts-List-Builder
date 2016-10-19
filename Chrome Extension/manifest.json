@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Rutgers MAE Design & Manufacturing Parts List Builder",
+  "version": "1.0",
+  
+  "description": "Easily create a parts list that's ready to be submitted to your TA.",
+
+  "browser_action": {
+    "default_icon": {
+		"19":"icon-19.png",
+		"38":"icon-38.png"},
+    "default_popup": "popup.html",
+	"default_title": "Add to Parts List"
+  },
+  "icons":{
+	"256":"icon-256.png",
+	"512":"icon-512.png"
+  },
+  "permissions": [
+    "activeTab",
+	"tabs",
+	"background",
+	"contextMenus"
+  ],
+  "content_scripts": [{
+    "matches": ["*://*.amazon.com/*","*://*.mcmaster.com/*"],
+    "js": ["jquery-1.11.2.min.js","content.js"],
+	"run_at":"document_start"
+  }],
+  "background":{
+	"scripts": ["jquery-1.11.2.min.js","background.js"]
+  }
+}

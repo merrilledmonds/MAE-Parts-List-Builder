@@ -255,7 +255,7 @@ function downloadForm(){
 	doc.setFontSize(8);
 	doc.setTextColor(0);
 	date = new Date();
-	doc.centeredText("Generated "+date.toUTCString()+" through the Chrome Extension.",settings.tmargin+1.2);
+	doc.centeredText("Generated "+date.toUTCString()+" through the Parts List Builder Webpage.",settings.tmargin+1.2);
 	doc.setFontSize(11);
 	
 	//Group Info

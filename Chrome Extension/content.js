@@ -6,6 +6,7 @@ function grabSKU(){
 	if(domain && domain.length>1){
 		domain = domain[1].toLowerCase();
 		console.log(domain);
+		// AMAZON
 		if(domain=="amazon"){
 			SKU = (window.location.href).match(/gp\/product\/([0-9A-Za-z]*)/);
 			if(SKU){SKU=SKU[1]};
@@ -47,12 +48,13 @@ function grabSKU(){
 			console.log("Content is returning Amazon parts")
 			console.log(return_message);
 			return return_message;
+		// MCMASTER
 		}else if(domain=="mcmaster"){
 			response_content = [];
 			$(".OrdPadProdsWebPart_AddedLnRow").each(function(index){
 				Quantity = $(this).find(".OrdPadProdsWebPart_QtyInp").val()
 				SKU = $(this).find(".OrdPadProdsWebPart_ItmCell").text();
-				Description = $(this).find(".OrdPadProdsWebPart_PartDscCell").text();
+				Description = $(this).find(".OrdPadProdsWebPart_PartDscCell").text().replace('Your referenceLine references cannot contain credit card numbers.','').trim();
 				Price = $(this).find(".OrdPadProdsWebPart_UnitPrceCell").text().match(/([0-9]*\.[0-9][0-9])/)[1];
 				response_content.push({"Vendor": "McMaster-Carr", "SKU": SKU,"Quantity": Quantity, "Price": Price, "Description": Description});
 			});

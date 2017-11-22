@@ -3,7 +3,7 @@ function extractNewLineText(){
 	newLineText = $("#items-list").first().html();
 }
 
-additionalVendors = ["Sigma-Aldrich","Fisher Scientific","Grainger"];
+additionalVendors = ["Sigma-Aldrich","Fisher Scientific","Grainger","Mouser","National Balsa","Custom Thermoelectric","Rutgers Chem Stockroom","Airgas"];
 function injectAdditionalVendors(){
 	$(".item-vendor-input").each(function(index){
 		for(vendor_index=0; vendor_index<additionalVendors.length;vendor_index++){
